@@ -1,0 +1,1032 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zkgame.meituan.dao.maper.DealMapper" >
+  <resultMap id="BaseResultMap" type="com.zkgame.meituan.model.Deal" >
+    <result column="id" property="id" jdbcType="INTEGER" />
+    <result column="website" property="website" jdbcType="VARCHAR" />
+    <result column="deal_more_img" property="dealMoreImg" jdbcType="VARCHAR" />
+    <result column="reservation" property="reservation" jdbcType="INTEGER" />
+    <result column="destination" property="destination" jdbcType="VARCHAR" />
+    <result column="partner" property="partner" jdbcType="INTEGER" />
+    <result column="city_name" property="cityName" jdbcType="VARCHAR" />
+    <result column="city_id" property="cityId" jdbcType="VARCHAR" />
+    <result column="city_url" property="cityUrl" jdbcType="VARCHAR" />
+    <result column="deal_id" property="dealId" jdbcType="INTEGER" />
+    <result column="deal_title" property="dealTitle" jdbcType="VARCHAR" />
+    <result column="deal_rank" property="dealRank" jdbcType="INTEGER" />
+    <result column="deal_url" property="dealUrl" jdbcType="VARCHAR" />
+    <result column="deal_img" property="dealImg" jdbcType="VARCHAR" />
+    <result column="deal_cate_id" property="dealCateId" jdbcType="INTEGER" />
+    <result column="deal_cate" property="dealCate" jdbcType="VARCHAR" />
+    <result column="deal_subcate_id" property="dealSubcateId" jdbcType="INTEGER" />
+    <result column="deal_subcate" property="dealSubcate" jdbcType="VARCHAR" />
+    <result column="deal_desc" property="dealDesc" jdbcType="VARCHAR" />
+    <result column="value" property="value" jdbcType="VARCHAR" />
+    <result column="price" property="price" jdbcType="VARCHAR" />
+    <result column="rebate" property="rebate" jdbcType="VARCHAR" />
+    <result column="refund" property="refund" jdbcType="INTEGER" />
+    <result column="sales_min" property="salesMin" jdbcType="INTEGER" />
+    <result column="sales_num" property="salesNum" jdbcType="INTEGER" />
+    <result column="sold_out" property="soldOut" jdbcType="VARCHAR" />
+    <result column="is_post" property="isPost" jdbcType="VARCHAR" />
+    <result column="start_time" property="startTime" jdbcType="INTEGER" />
+    <result column="end_time" property="endTime" jdbcType="INTEGER" />
+    <result column="coupon_start_time" property="couponStartTime" jdbcType="INTEGER" />
+    <result column="coupon_end_time" property="couponEndTime" jdbcType="INTEGER" />
+    <result column="deal_tips" property="dealTips" jdbcType="VARCHAR" />
+    <result column="deal_wow" property="dealWow" jdbcType="VARCHAR" />
+    <result column="deal_range" property="dealRange" jdbcType="VARCHAR" />
+    <result column="deal_range_id" property="dealRangeId" jdbcType="VARCHAR" />
+    <result column="deal_district_id" property="dealDistrictId" jdbcType="VARCHAR" />
+    <result column="deal_district_name" property="dealDistrictName" jdbcType="VARCHAR" />
+    <result column="deal_address" property="dealAddress" jdbcType="VARCHAR" />
+    <result column="deal_lng" property="dealLng" jdbcType="VARCHAR" />
+    <result column="deal_lat" property="dealLat" jdbcType="VARCHAR" />
+    <result column="deal_name" property="dealName" jdbcType="VARCHAR" />
+    <result column="deal_seller" property="dealSeller" jdbcType="VARCHAR" />
+    <result column="deal_phones" property="dealPhones" jdbcType="VARCHAR" />
+    <result column="deal_roomtype" property="dealRoomtype" jdbcType="VARCHAR" />
+    <result column="deal_roomtime" property="dealRoomtime" jdbcType="VARCHAR" />
+    <result column="coupon" property="coupon" jdbcType="INTEGER" />
+    <result column="shops" property="shops" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+  	id, website, deal_more_img, reservation, destination, partner, city_name, city_id, city_url, deal_id, deal_title, deal_rank, deal_url, deal_img, deal_cate_id, deal_cate, deal_subcate_id, deal_subcate, deal_desc, value, price, rebate, refund, sales_min, sales_num, sold_out, is_post, start_time, end_time, coupon_start_time, coupon_end_time, deal_tips, deal_wow, deal_range, deal_range_id, deal_district_id, deal_district_name, deal_address, deal_lng, deal_lat, deal_name, deal_seller, deal_phones, deal_roomtype, deal_roomtime, coupon, shops
+  </sql>
+  <!-- 查找记录 -->
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_deal
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <!-- 删除指定记录 -->
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_deal
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <!-- 新增记录 -->
+  <insert id="insert" parameterType="com.zkgame.meituan.model.Deal" useGeneratedKeys="true" keyProperty="id">
+    insert into t_deal (
+    id, website, deal_more_img, reservation, destination, partner, city_name, city_id, city_url, deal_id, deal_title, deal_rank, deal_url, deal_img, deal_cate_id, deal_cate, deal_subcate_id, deal_subcate, deal_desc, value, price, rebate, refund, sales_min, sales_num, sold_out, is_post, start_time, end_time, coupon_start_time, coupon_end_time, deal_tips, deal_wow, deal_range, deal_range_id, deal_district_id, deal_district_name, deal_address, deal_lng, deal_lat, deal_name, deal_seller, deal_phones, deal_roomtype, deal_roomtime, coupon, shops
+    )
+    values (
+    #{id,jdbcType=INTEGER}, #{website,jdbcType=VARCHAR}, #{dealMoreImg,jdbcType=VARCHAR}, #{reservation,jdbcType=INTEGER}, #{destination,jdbcType=VARCHAR}, #{partner,jdbcType=INTEGER}, #{cityName,jdbcType=VARCHAR}, #{cityId,jdbcType=VARCHAR}, #{cityUrl,jdbcType=VARCHAR}, #{dealId,jdbcType=INTEGER}, #{dealTitle,jdbcType=VARCHAR}, #{dealRank,jdbcType=INTEGER}, #{dealUrl,jdbcType=VARCHAR}, #{dealImg,jdbcType=VARCHAR}, #{dealCateId,jdbcType=INTEGER}, #{dealCate,jdbcType=VARCHAR}, #{dealSubcateId,jdbcType=INTEGER}, #{dealSubcate,jdbcType=VARCHAR}, #{dealDesc,jdbcType=VARCHAR}, #{value,jdbcType=VARCHAR}, #{price,jdbcType=VARCHAR}, #{rebate,jdbcType=VARCHAR}, #{refund,jdbcType=INTEGER}, #{salesMin,jdbcType=INTEGER}, #{salesNum,jdbcType=INTEGER}, #{soldOut,jdbcType=VARCHAR}, #{isPost,jdbcType=VARCHAR}, #{startTime,jdbcType=INTEGER}, #{endTime,jdbcType=INTEGER}, #{couponStartTime,jdbcType=INTEGER}, #{couponEndTime,jdbcType=INTEGER}, #{dealTips,jdbcType=VARCHAR}, #{dealWow,jdbcType=VARCHAR}, #{dealRange,jdbcType=VARCHAR}, #{dealRangeId,jdbcType=VARCHAR}, #{dealDistrictId,jdbcType=VARCHAR}, #{dealDistrictName,jdbcType=VARCHAR}, #{dealAddress,jdbcType=VARCHAR}, #{dealLng,jdbcType=VARCHAR}, #{dealLat,jdbcType=VARCHAR}, #{dealName,jdbcType=VARCHAR}, #{dealSeller,jdbcType=VARCHAR}, #{dealPhones,jdbcType=VARCHAR}, #{dealRoomtype,jdbcType=VARCHAR}, #{dealRoomtime,jdbcType=VARCHAR}, #{coupon,jdbcType=INTEGER}, #{shops,jdbcType=VARCHAR}
+    )
+  </insert>
+  <!-- 新增记录 -->
+  <insert id="insertSelective" parameterType="com.zkgame.meituan.model.Deal" useGeneratedKeys="true" keyProperty="id">
+    insert into t_deal
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+    	<if test="id != null" >
+        id,
+      </if>
+    	<if test="website != null" >
+        website,
+      </if>
+    	<if test="dealMoreImg != null" >
+        deal_more_img,
+      </if>
+    	<if test="reservation != null" >
+        reservation,
+      </if>
+    	<if test="destination != null" >
+        destination,
+      </if>
+    	<if test="partner != null" >
+        partner,
+      </if>
+    	<if test="cityName != null" >
+        city_name,
+      </if>
+    	<if test="cityId != null" >
+        city_id,
+      </if>
+    	<if test="cityUrl != null" >
+        city_url,
+      </if>
+    	<if test="dealId != null" >
+        deal_id,
+      </if>
+    	<if test="dealTitle != null" >
+        deal_title,
+      </if>
+    	<if test="dealRank != null" >
+        deal_rank,
+      </if>
+    	<if test="dealUrl != null" >
+        deal_url,
+      </if>
+    	<if test="dealImg != null" >
+        deal_img,
+      </if>
+    	<if test="dealCateId != null" >
+        deal_cate_id,
+      </if>
+    	<if test="dealCate != null" >
+        deal_cate,
+      </if>
+    	<if test="dealSubcateId != null" >
+        deal_subcate_id,
+      </if>
+    	<if test="dealSubcate != null" >
+        deal_subcate,
+      </if>
+    	<if test="dealDesc != null" >
+        deal_desc,
+      </if>
+    	<if test="value != null" >
+        value,
+      </if>
+    	<if test="price != null" >
+        price,
+      </if>
+    	<if test="rebate != null" >
+        rebate,
+      </if>
+    	<if test="refund != null" >
+        refund,
+      </if>
+    	<if test="salesMin != null" >
+        sales_min,
+      </if>
+    	<if test="salesNum != null" >
+        sales_num,
+      </if>
+    	<if test="soldOut != null" >
+        sold_out,
+      </if>
+    	<if test="isPost != null" >
+        is_post,
+      </if>
+    	<if test="startTime != null" >
+        start_time,
+      </if>
+    	<if test="endTime != null" >
+        end_time,
+      </if>
+    	<if test="couponStartTime != null" >
+        coupon_start_time,
+      </if>
+    	<if test="couponEndTime != null" >
+        coupon_end_time,
+      </if>
+    	<if test="dealTips != null" >
+        deal_tips,
+      </if>
+    	<if test="dealWow != null" >
+        deal_wow,
+      </if>
+    	<if test="dealRange != null" >
+        deal_range,
+      </if>
+    	<if test="dealRangeId != null" >
+        deal_range_id,
+      </if>
+    	<if test="dealDistrictId != null" >
+        deal_district_id,
+      </if>
+    	<if test="dealDistrictName != null" >
+        deal_district_name,
+      </if>
+    	<if test="dealAddress != null" >
+        deal_address,
+      </if>
+    	<if test="dealLng != null" >
+        deal_lng,
+      </if>
+    	<if test="dealLat != null" >
+        deal_lat,
+      </if>
+    	<if test="dealName != null" >
+        deal_name,
+      </if>
+    	<if test="dealSeller != null" >
+        deal_seller,
+      </if>
+    	<if test="dealPhones != null" >
+        deal_phones,
+      </if>
+    	<if test="dealRoomtype != null" >
+        deal_roomtype,
+      </if>
+    	<if test="dealRoomtime != null" >
+        deal_roomtime,
+      </if>
+    	<if test="coupon != null" >
+        coupon,
+      </if>
+    	<if test="shops != null" >
+        shops,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+    	<if test="id != null" >
+    		#{id,jdbcType=INTEGER},
+      </if>
+    	<if test="website != null" >
+    		#{website,jdbcType=VARCHAR},
+      </if>
+    	<if test="dealMoreImg != null" >
+    		#{dealMoreImg,jdbcType=VARCHAR},
+      </if>
+    	<if test="reservation != null" >
+    		#{reservation,jdbcType=INTEGER},
+      </if>
+    	<if test="destination != null" >
+    		#{destination,jdbcType=VARCHAR},
+      </if>
+    	<if test="partner != null" >
+    		#{partner,jdbcType=INTEGER},
+      </if>
+    	<if test="cityName != null" >
+    		#{cityName,jdbcType=VARCHAR},
+      </if>
+    	<if test="cityId != null" >
+    		#{cityId,jdbcType=VARCHAR},
+      </if>
+    	<if test="cityUrl != null" >
+    		#{cityUrl,jdbcType=VARCHAR},
+      </if>
+    	<if test="dealId != null" >
+    		#{dealId,jdbcType=INTEGER},
+      </if>
+    	<if test="dealTitle != null" >
+    		#{dealTitle,jdbcType=VARCHAR},
+      </if>
+    	<if test="dealRank != null" >
+    		#{dealRank,jdbcType=INTEGER},
+      </if>
+    	<if test="dealUrl != null" >
+    		#{dealUrl,jdbcType=VARCHAR},
+      </if>
+    	<if test="dealImg != null" >
+    		#{dealImg,jdbcType=VARCHAR},
+      </if>
+    	<if test="dealCateId != null" >
+    		#{dealCateId,jdbcType=INTEGER},
+      </if>
+    	<if test="dealCate != null" >
+    		#{dealCate,jdbcType=VARCHAR},
+      </if>
+    	<if test="dealSubcateId != null" >
+    		#{dealSubcateId,jdbcType=INTEGER},
+      </if>
+    	<if test="dealSubcate != null" >
+    		#{dealSubcate,jdbcType=VARCHAR},
+      </if>
+    	<if test="dealDesc != null" >
+    		#{dealDesc,jdbcType=VARCHAR},
+      </if>
+    	<if test="value != null" >
+    		#{value,jdbcType=VARCHAR},
+      </if>
+    	<if test="price != null" >
+    		#{price,jdbcType=VARCHAR},
+      </if>
+    	<if test="rebate != null" >
+    		#{rebate,jdbcType=VARCHAR},
+      </if>
+    	<if test="refund != null" >
+    		#{refund,jdbcType=INTEGER},
+      </if>
+    	<if test="salesMin != null" >
+    		#{salesMin,jdbcType=INTEGER},
+      </if>
+    	<if test="salesNum != null" >
+    		#{salesNum,jdbcType=INTEGER},
+      </if>
+    	<if test="soldOut != null" >
+    		#{soldOut,jdbcType=VARCHAR},
+      </if>
+    	<if test="isPost != null" >
+    		#{isPost,jdbcType=VARCHAR},
+      </if>
+    	<if test="startTime != null" >
+    		#{startTime,jdbcType=INTEGER},
+      </if>
+    	<if test="endTime != null" >
+    		#{endTime,jdbcType=INTEGER},
+      </if>
+    	<if test="couponStartTime != null" >
+    		#{couponStartTime,jdbcType=INTEGER},
+      </if>
+    	<if test="couponEndTime != null" >
+    		#{couponEndTime,jdbcType=INTEGER},
+      </if>
+    	<if test="dealTips != null" >
+    		#{dealTips,jdbcType=VARCHAR},
+      </if>
+    	<if test="dealWow != null" >
+    		#{dealWow,jdbcType=VARCHAR},
+      </if>
+    	<if test="dealRange != null" >
+    		#{dealRange,jdbcType=VARCHAR},
+      </if>
+    	<if test="dealRangeId != null" >
+    		#{dealRangeId,jdbcType=VARCHAR},
+      </if>
+    	<if test="dealDistrictId != null" >
+    		#{dealDistrictId,jdbcType=VARCHAR},
+      </if>
+    	<if test="dealDistrictName != null" >
+    		#{dealDistrictName,jdbcType=VARCHAR},
+      </if>
+    	<if test="dealAddress != null" >
+    		#{dealAddress,jdbcType=VARCHAR},
+      </if>
+    	<if test="dealLng != null" >
+    		#{dealLng,jdbcType=VARCHAR},
+      </if>
+    	<if test="dealLat != null" >
+    		#{dealLat,jdbcType=VARCHAR},
+      </if>
+    	<if test="dealName != null" >
+    		#{dealName,jdbcType=VARCHAR},
+      </if>
+    	<if test="dealSeller != null" >
+    		#{dealSeller,jdbcType=VARCHAR},
+      </if>
+    	<if test="dealPhones != null" >
+    		#{dealPhones,jdbcType=VARCHAR},
+      </if>
+    	<if test="dealRoomtype != null" >
+    		#{dealRoomtype,jdbcType=VARCHAR},
+      </if>
+    	<if test="dealRoomtime != null" >
+    		#{dealRoomtime,jdbcType=VARCHAR},
+      </if>
+    	<if test="coupon != null" >
+    		#{coupon,jdbcType=INTEGER},
+      </if>
+    	<if test="shops != null" >
+    		#{shops,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <!-- 修改指定记录 -->
+  <update id="updateByPrimaryKeySelective" parameterType="com.zkgame.meituan.model.Deal" >
+    update t_deal
+    <set>
+    	<if test="website != null" >
+    		website = #{website,jdbcType=VARCHAR},
+      </if>
+    	<if test="dealMoreImg != null" >
+    		deal_more_img = #{dealMoreImg,jdbcType=VARCHAR},
+      </if>
+    	<if test="reservation != null" >
+    		reservation = #{reservation,jdbcType=INTEGER},
+      </if>
+    	<if test="destination != null" >
+    		destination = #{destination,jdbcType=VARCHAR},
+      </if>
+    	<if test="partner != null" >
+    		partner = #{partner,jdbcType=INTEGER},
+      </if>
+    	<if test="cityName != null" >
+    		city_name = #{cityName,jdbcType=VARCHAR},
+      </if>
+    	<if test="cityId != null" >
+    		city_id = #{cityId,jdbcType=VARCHAR},
+      </if>
+    	<if test="cityUrl != null" >
+    		city_url = #{cityUrl,jdbcType=VARCHAR},
+      </if>
+    	<if test="dealId != null" >
+    		deal_id = #{dealId,jdbcType=INTEGER},
+      </if>
+    	<if test="dealTitle != null" >
+    		deal_title = #{dealTitle,jdbcType=VARCHAR},
+      </if>
+    	<if test="dealRank != null" >
+    		deal_rank = #{dealRank,jdbcType=INTEGER},
+      </if>
+    	<if test="dealUrl != null" >
+    		deal_url = #{dealUrl,jdbcType=VARCHAR},
+      </if>
+    	<if test="dealImg != null" >
+    		deal_img = #{dealImg,jdbcType=VARCHAR},
+      </if>
+    	<if test="dealCateId != null" >
+    		deal_cate_id = #{dealCateId,jdbcType=INTEGER},
+      </if>
+    	<if test="dealCate != null" >
+    		deal_cate = #{dealCate,jdbcType=VARCHAR},
+      </if>
+    	<if test="dealSubcateId != null" >
+    		deal_subcate_id = #{dealSubcateId,jdbcType=INTEGER},
+      </if>
+    	<if test="dealSubcate != null" >
+    		deal_subcate = #{dealSubcate,jdbcType=VARCHAR},
+      </if>
+    	<if test="dealDesc != null" >
+    		deal_desc = #{dealDesc,jdbcType=VARCHAR},
+      </if>
+    	<if test="value != null" >
+    		value = #{value,jdbcType=VARCHAR},
+      </if>
+    	<if test="price != null" >
+    		price = #{price,jdbcType=VARCHAR},
+      </if>
+    	<if test="rebate != null" >
+    		rebate = #{rebate,jdbcType=VARCHAR},
+      </if>
+    	<if test="refund != null" >
+    		refund = #{refund,jdbcType=INTEGER},
+      </if>
+    	<if test="salesMin != null" >
+    		sales_min = #{salesMin,jdbcType=INTEGER},
+      </if>
+    	<if test="salesNum != null" >
+    		sales_num = #{salesNum,jdbcType=INTEGER},
+      </if>
+    	<if test="soldOut != null" >
+    		sold_out = #{soldOut,jdbcType=VARCHAR},
+      </if>
+    	<if test="isPost != null" >
+    		is_post = #{isPost,jdbcType=VARCHAR},
+      </if>
+    	<if test="startTime != null" >
+    		start_time = #{startTime,jdbcType=INTEGER},
+      </if>
+    	<if test="endTime != null" >
+    		end_time = #{endTime,jdbcType=INTEGER},
+      </if>
+    	<if test="couponStartTime != null" >
+    		coupon_start_time = #{couponStartTime,jdbcType=INTEGER},
+      </if>
+    	<if test="couponEndTime != null" >
+    		coupon_end_time = #{couponEndTime,jdbcType=INTEGER},
+      </if>
+    	<if test="dealTips != null" >
+    		deal_tips = #{dealTips,jdbcType=VARCHAR},
+      </if>
+    	<if test="dealWow != null" >
+    		deal_wow = #{dealWow,jdbcType=VARCHAR},
+      </if>
+    	<if test="dealRange != null" >
+    		deal_range = #{dealRange,jdbcType=VARCHAR},
+      </if>
+    	<if test="dealRangeId != null" >
+    		deal_range_id = #{dealRangeId,jdbcType=VARCHAR},
+      </if>
+    	<if test="dealDistrictId != null" >
+    		deal_district_id = #{dealDistrictId,jdbcType=VARCHAR},
+      </if>
+    	<if test="dealDistrictName != null" >
+    		deal_district_name = #{dealDistrictName,jdbcType=VARCHAR},
+      </if>
+    	<if test="dealAddress != null" >
+    		deal_address = #{dealAddress,jdbcType=VARCHAR},
+      </if>
+    	<if test="dealLng != null" >
+    		deal_lng = #{dealLng,jdbcType=VARCHAR},
+      </if>
+    	<if test="dealLat != null" >
+    		deal_lat = #{dealLat,jdbcType=VARCHAR},
+      </if>
+    	<if test="dealName != null" >
+    		deal_name = #{dealName,jdbcType=VARCHAR},
+      </if>
+    	<if test="dealSeller != null" >
+    		deal_seller = #{dealSeller,jdbcType=VARCHAR},
+      </if>
+    	<if test="dealPhones != null" >
+    		deal_phones = #{dealPhones,jdbcType=VARCHAR},
+      </if>
+    	<if test="dealRoomtype != null" >
+    		deal_roomtype = #{dealRoomtype,jdbcType=VARCHAR},
+      </if>
+    	<if test="dealRoomtime != null" >
+    		deal_roomtime = #{dealRoomtime,jdbcType=VARCHAR},
+      </if>
+    	<if test="coupon != null" >
+    		coupon = #{coupon,jdbcType=INTEGER},
+      </if>
+    	<if test="shops != null" >
+    		shops = #{shops,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <!-- 修改指定记录 -->
+  <update id="updateByPrimaryKey" parameterType="com.zkgame.meituan.model.Deal" >
+    update t_deal
+    set 
+	  	id = #{id,jdbcType=INTEGER}, 
+	  	website = #{website,jdbcType=VARCHAR}, 
+	  	deal_more_img = #{dealMoreImg,jdbcType=VARCHAR}, 
+	  	reservation = #{reservation,jdbcType=INTEGER}, 
+	  	destination = #{destination,jdbcType=VARCHAR}, 
+	  	partner = #{partner,jdbcType=INTEGER}, 
+	  	city_name = #{cityName,jdbcType=VARCHAR}, 
+	  	city_id = #{cityId,jdbcType=VARCHAR}, 
+	  	city_url = #{cityUrl,jdbcType=VARCHAR}, 
+	  	deal_id = #{dealId,jdbcType=INTEGER}, 
+	  	deal_title = #{dealTitle,jdbcType=VARCHAR}, 
+	  	deal_rank = #{dealRank,jdbcType=INTEGER}, 
+	  	deal_url = #{dealUrl,jdbcType=VARCHAR}, 
+	  	deal_img = #{dealImg,jdbcType=VARCHAR}, 
+	  	deal_cate_id = #{dealCateId,jdbcType=INTEGER}, 
+	  	deal_cate = #{dealCate,jdbcType=VARCHAR}, 
+	  	deal_subcate_id = #{dealSubcateId,jdbcType=INTEGER}, 
+	  	deal_subcate = #{dealSubcate,jdbcType=VARCHAR}, 
+	  	deal_desc = #{dealDesc,jdbcType=VARCHAR}, 
+	  	value = #{value,jdbcType=VARCHAR}, 
+	  	price = #{price,jdbcType=VARCHAR}, 
+	  	rebate = #{rebate,jdbcType=VARCHAR}, 
+	  	refund = #{refund,jdbcType=INTEGER}, 
+	  	sales_min = #{salesMin,jdbcType=INTEGER}, 
+	  	sales_num = #{salesNum,jdbcType=INTEGER}, 
+	  	sold_out = #{soldOut,jdbcType=VARCHAR}, 
+	  	is_post = #{isPost,jdbcType=VARCHAR}, 
+	  	start_time = #{startTime,jdbcType=INTEGER}, 
+	  	end_time = #{endTime,jdbcType=INTEGER}, 
+	  	coupon_start_time = #{couponStartTime,jdbcType=INTEGER}, 
+	  	coupon_end_time = #{couponEndTime,jdbcType=INTEGER}, 
+	  	deal_tips = #{dealTips,jdbcType=VARCHAR}, 
+	  	deal_wow = #{dealWow,jdbcType=VARCHAR}, 
+	  	deal_range = #{dealRange,jdbcType=VARCHAR}, 
+	  	deal_range_id = #{dealRangeId,jdbcType=VARCHAR}, 
+	  	deal_district_id = #{dealDistrictId,jdbcType=VARCHAR}, 
+	  	deal_district_name = #{dealDistrictName,jdbcType=VARCHAR}, 
+	  	deal_address = #{dealAddress,jdbcType=VARCHAR}, 
+	  	deal_lng = #{dealLng,jdbcType=VARCHAR}, 
+	  	deal_lat = #{dealLat,jdbcType=VARCHAR}, 
+	  	deal_name = #{dealName,jdbcType=VARCHAR}, 
+	  	deal_seller = #{dealSeller,jdbcType=VARCHAR}, 
+	  	deal_phones = #{dealPhones,jdbcType=VARCHAR}, 
+	  	deal_roomtype = #{dealRoomtype,jdbcType=VARCHAR}, 
+	  	deal_roomtime = #{dealRoomtime,jdbcType=VARCHAR}, 
+	  	coupon = #{coupon,jdbcType=INTEGER}, 
+	  	shops = #{shops,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <!-- 按条件查询(可分页) -->
+  <select id="selectByParams" parameterType="java.util.Map" resultMap="BaseResultMap">
+  	select
+    <include refid="Base_Column_List" />
+    from t_deal
+    <where>
+    	<if test="id != null" >
+    		AND id = #{id}
+      </if>
+    	<if test="website != null" >
+    		AND website = #{website}
+      </if>
+    	<if test="dealMoreImg != null" >
+    		AND deal_more_img = #{dealMoreImg}
+      </if>
+    	<if test="reservation != null" >
+    		AND reservation = #{reservation}
+      </if>
+    	<if test="destination != null" >
+    		AND destination = #{destination}
+      </if>
+    	<if test="partner != null" >
+    		AND partner = #{partner}
+      </if>
+    	<if test="cityName != null" >
+    		AND city_name = #{cityName}
+      </if>
+    	<if test="cityId != null" >
+    		AND city_id = #{cityId}
+      </if>
+    	<if test="cityUrl != null" >
+    		AND city_url = #{cityUrl}
+      </if>
+    	<if test="dealId != null" >
+    		AND deal_id = #{dealId}
+      </if>
+    	<if test="dealTitle != null" >
+    		AND deal_title = #{dealTitle}
+      </if>
+    	<if test="dealRank != null" >
+    		AND deal_rank = #{dealRank}
+      </if>
+    	<if test="dealUrl != null" >
+    		AND deal_url = #{dealUrl}
+      </if>
+    	<if test="dealImg != null" >
+    		AND deal_img = #{dealImg}
+      </if>
+    	<if test="dealCateId != null" >
+    		AND deal_cate_id = #{dealCateId}
+      </if>
+    	<if test="dealCate != null" >
+    		AND deal_cate = #{dealCate}
+      </if>
+    	<if test="dealSubcateId != null" >
+    		AND deal_subcate_id = #{dealSubcateId}
+      </if>
+    	<if test="dealSubcate != null" >
+    		AND deal_subcate = #{dealSubcate}
+      </if>
+    	<if test="dealDesc != null" >
+    		AND deal_desc = #{dealDesc}
+      </if>
+    	<if test="value != null" >
+    		AND value = #{value}
+      </if>
+    	<if test="price != null" >
+    		AND price = #{price}
+      </if>
+    	<if test="rebate != null" >
+    		AND rebate = #{rebate}
+      </if>
+    	<if test="refund != null" >
+    		AND refund = #{refund}
+      </if>
+    	<if test="salesMin != null" >
+    		AND sales_min = #{salesMin}
+      </if>
+    	<if test="salesNum != null" >
+    		AND sales_num = #{salesNum}
+      </if>
+    	<if test="soldOut != null" >
+    		AND sold_out = #{soldOut}
+      </if>
+    	<if test="isPost != null" >
+    		AND is_post = #{isPost}
+      </if>
+    	<if test="startTime != null" >
+    		AND start_time = #{startTime}
+      </if>
+    	<if test="endTime != null" >
+    		AND end_time = #{endTime}
+      </if>
+    	<if test="couponStartTime != null" >
+    		AND coupon_start_time = #{couponStartTime}
+      </if>
+    	<if test="couponEndTime != null" >
+    		AND coupon_end_time = #{couponEndTime}
+      </if>
+    	<if test="dealTips != null" >
+    		AND deal_tips = #{dealTips}
+      </if>
+    	<if test="dealWow != null" >
+    		AND deal_wow = #{dealWow}
+      </if>
+    	<if test="dealRange != null" >
+    		AND deal_range = #{dealRange}
+      </if>
+    	<if test="dealRangeId != null" >
+    		AND deal_range_id = #{dealRangeId}
+      </if>
+    	<if test="dealDistrictId != null" >
+    		AND deal_district_id = #{dealDistrictId}
+      </if>
+    	<if test="dealDistrictName != null" >
+    		AND deal_district_name = #{dealDistrictName}
+      </if>
+    	<if test="dealAddress != null" >
+    		AND deal_address = #{dealAddress}
+      </if>
+    	<if test="dealLng != null" >
+    		AND deal_lng = #{dealLng}
+      </if>
+    	<if test="dealLat != null" >
+    		AND deal_lat = #{dealLat}
+      </if>
+    	<if test="dealName != null" >
+    		AND deal_name = #{dealName}
+      </if>
+    	<if test="dealSeller != null" >
+    		AND deal_seller = #{dealSeller}
+      </if>
+    	<if test="dealPhones != null" >
+    		AND deal_phones = #{dealPhones}
+      </if>
+    	<if test="dealRoomtype != null" >
+    		AND deal_roomtype = #{dealRoomtype}
+      </if>
+    	<if test="dealRoomtime != null" >
+    		AND deal_roomtime = #{dealRoomtime}
+      </if>
+    	<if test="coupon != null" >
+    		AND coupon = #{coupon}
+      </if>
+    	<if test="shops != null" >
+    		AND shops = #{shops}
+      </if>
+    </where>
+    <if test="startRow != null and pageSize != null">limit #{startRow},#{pageSize}</if>
+  </select>
+  <!-- 按条件查询总数 -->
+  <select id="selectCntByParams" parameterType="java.util.Map" resultType="java.lang.Integer">
+  	select
+    count(*)
+    from t_deal
+    <where>
+    	<if test="id != null" >
+    		AND id = #{id}
+      </if>
+    	<if test="website != null" >
+    		AND website = #{website}
+      </if>
+    	<if test="dealMoreImg != null" >
+    		AND deal_more_img = #{dealMoreImg}
+      </if>
+    	<if test="reservation != null" >
+    		AND reservation = #{reservation}
+      </if>
+    	<if test="destination != null" >
+    		AND destination = #{destination}
+      </if>
+    	<if test="partner != null" >
+    		AND partner = #{partner}
+      </if>
+    	<if test="cityName != null" >
+    		AND city_name = #{cityName}
+      </if>
+    	<if test="cityId != null" >
+    		AND city_id = #{cityId}
+      </if>
+    	<if test="cityUrl != null" >
+    		AND city_url = #{cityUrl}
+      </if>
+    	<if test="dealId != null" >
+    		AND deal_id = #{dealId}
+      </if>
+    	<if test="dealTitle != null" >
+    		AND deal_title = #{dealTitle}
+      </if>
+    	<if test="dealRank != null" >
+    		AND deal_rank = #{dealRank}
+      </if>
+    	<if test="dealUrl != null" >
+    		AND deal_url = #{dealUrl}
+      </if>
+    	<if test="dealImg != null" >
+    		AND deal_img = #{dealImg}
+      </if>
+    	<if test="dealCateId != null" >
+    		AND deal_cate_id = #{dealCateId}
+      </if>
+    	<if test="dealCate != null" >
+    		AND deal_cate = #{dealCate}
+      </if>
+    	<if test="dealSubcateId != null" >
+    		AND deal_subcate_id = #{dealSubcateId}
+      </if>
+    	<if test="dealSubcate != null" >
+    		AND deal_subcate = #{dealSubcate}
+      </if>
+    	<if test="dealDesc != null" >
+    		AND deal_desc = #{dealDesc}
+      </if>
+    	<if test="value != null" >
+    		AND value = #{value}
+      </if>
+    	<if test="price != null" >
+    		AND price = #{price}
+      </if>
+    	<if test="rebate != null" >
+    		AND rebate = #{rebate}
+      </if>
+    	<if test="refund != null" >
+    		AND refund = #{refund}
+      </if>
+    	<if test="salesMin != null" >
+    		AND sales_min = #{salesMin}
+      </if>
+    	<if test="salesNum != null" >
+    		AND sales_num = #{salesNum}
+      </if>
+    	<if test="soldOut != null" >
+    		AND sold_out = #{soldOut}
+      </if>
+    	<if test="isPost != null" >
+    		AND is_post = #{isPost}
+      </if>
+    	<if test="startTime != null" >
+    		AND start_time = #{startTime}
+      </if>
+    	<if test="endTime != null" >
+    		AND end_time = #{endTime}
+      </if>
+    	<if test="couponStartTime != null" >
+    		AND coupon_start_time = #{couponStartTime}
+      </if>
+    	<if test="couponEndTime != null" >
+    		AND coupon_end_time = #{couponEndTime}
+      </if>
+    	<if test="dealTips != null" >
+    		AND deal_tips = #{dealTips}
+      </if>
+    	<if test="dealWow != null" >
+    		AND deal_wow = #{dealWow}
+      </if>
+    	<if test="dealRange != null" >
+    		AND deal_range = #{dealRange}
+      </if>
+    	<if test="dealRangeId != null" >
+    		AND deal_range_id = #{dealRangeId}
+      </if>
+    	<if test="dealDistrictId != null" >
+    		AND deal_district_id = #{dealDistrictId}
+      </if>
+    	<if test="dealDistrictName != null" >
+    		AND deal_district_name = #{dealDistrictName}
+      </if>
+    	<if test="dealAddress != null" >
+    		AND deal_address = #{dealAddress}
+      </if>
+    	<if test="dealLng != null" >
+    		AND deal_lng = #{dealLng}
+      </if>
+    	<if test="dealLat != null" >
+    		AND deal_lat = #{dealLat}
+      </if>
+    	<if test="dealName != null" >
+    		AND deal_name = #{dealName}
+      </if>
+    	<if test="dealSeller != null" >
+    		AND deal_seller = #{dealSeller}
+      </if>
+    	<if test="dealPhones != null" >
+    		AND deal_phones = #{dealPhones}
+      </if>
+    	<if test="dealRoomtype != null" >
+    		AND deal_roomtype = #{dealRoomtype}
+      </if>
+    	<if test="dealRoomtime != null" >
+    		AND deal_roomtime = #{dealRoomtime}
+      </if>
+    	<if test="coupon != null" >
+    		AND coupon = #{coupon}
+      </if>
+    	<if test="shops != null" >
+    		AND shops = #{shops}
+      </if>
+    </where>
+  </select>
+  
+  
+  <!-- 以城市删除记录 -->
+  <delete id="removeByCityId" parameterType="java.lang.String" >
+    delete from t_deal
+    where city_id like concat('%',#{cityId},'%')
+  </delete>
+  
+  
+  
+  
+    <!-- 模糊条件查询(可分页) -->
+  <select id="searchDeal" parameterType="java.util.Map" resultMap="BaseResultMap">
+  	select
+    <include refid="Base_Column_List" />
+    from t_deal
+    <where>
+    	<if test="id != null" >
+    		AND id = #{id}
+      </if>
+    	<if test="website != null" >
+    		AND website = #{website}
+      </if>
+    	<if test="dealMoreImg != null" >
+    		AND deal_more_img = #{dealMoreImg}
+      </if>
+    	<if test="reservation != null" >
+    		AND reservation = #{reservation}
+      </if>
+    	<if test="destination != null" >
+    		AND destination = #{destination}
+      </if>
+    	<if test="partner != null" >
+    		AND partner = #{partner}
+      </if>
+    	<if test="cityName != null" >
+    		AND city_name = #{cityName}
+      </if>
+    	<if test="cityId != null" >
+    		AND city_id = #{cityId}
+      </if>
+    	<if test="cityUrl != null" >
+    		AND city_url = #{cityUrl}
+      </if>
+    	<if test="dealId != null" >
+    		AND deal_id = #{dealId}
+      </if>
+    	<if test="dealTitle != null" >
+    		AND deal_title like concat(#{dealTitle},'%')
+      </if>
+    	<if test="dealRank != null" >
+    		AND deal_rank = #{dealRank}
+      </if>
+    	<if test="dealUrl != null" >
+    		AND deal_url = #{dealUrl}
+      </if>
+    	<if test="dealImg != null" >
+    		AND deal_img = #{dealImg}
+      </if>
+    	<if test="dealCateId != null" >
+    		AND deal_cate_id = #{dealCateId}
+      </if>
+    	<if test="dealCate != null" >
+    		AND deal_cate = #{dealCate}
+      </if>
+    	<if test="dealSubcateId != null" >
+    		AND deal_subcate_id = #{dealSubcateId}
+      </if>
+    	<if test="dealSubcate != null" >
+    		AND deal_subcate = #{dealSubcate}
+      </if>
+    	<if test="dealDesc != null" >
+    		AND deal_desc = #{dealDesc}
+      </if>
+    	<if test="value != null" >
+    		AND value = #{value}
+      </if>
+    	<if test="price != null" >
+    		AND price = #{price}
+      </if>
+    	<if test="rebate != null" >
+    		AND rebate = #{rebate}
+      </if>
+    	<if test="refund != null" >
+    		AND refund = #{refund}
+      </if>
+    	<if test="salesMin != null" >
+    		AND sales_min = #{salesMin}
+      </if>
+    	<if test="salesNum != null" >
+    		AND sales_num = #{salesNum}
+      </if>
+    	<if test="soldOut != null" >
+    		AND sold_out = #{soldOut}
+      </if>
+    	<if test="isPost != null" >
+    		AND is_post = #{isPost}
+      </if>
+    	<if test="startTime != null" >
+    		AND start_time = #{startTime}
+      </if>
+    	<if test="endTime != null" >
+    		AND end_time = #{endTime}
+      </if>
+    	<if test="couponStartTime != null" >
+    		AND coupon_start_time = #{couponStartTime}
+      </if>
+    	<if test="couponEndTime != null" >
+    		AND coupon_end_time = #{couponEndTime}
+      </if>
+    	<if test="dealTips != null" >
+    		AND deal_tips = #{dealTips}
+      </if>
+    	<if test="dealWow != null" >
+    		AND deal_wow = #{dealWow}
+      </if>
+    	<if test="dealRange != null" >
+    		AND deal_range = #{dealRange}
+      </if>
+    	<if test="dealRangeId != null" >
+    		AND deal_range_id = #{dealRangeId}
+      </if>
+    	<if test="dealDistrictId != null" >
+    		AND deal_district_id = #{dealDistrictId}
+      </if>
+    	<if test="dealDistrictName != null" >
+    		AND deal_district_name = #{dealDistrictName}
+      </if>
+    	<if test="dealAddress != null" >
+    		AND deal_address = #{dealAddress}
+      </if>
+    	<if test="dealLng != null" >
+    		AND deal_lng = #{dealLng}
+      </if>
+    	<if test="dealLat != null" >
+    		AND deal_lat = #{dealLat}
+      </if>
+    	<if test="dealName != null" >
+    		AND deal_name like concat(#{dealName},'%')
+      </if>
+    	<if test="dealSeller != null" >
+    		AND deal_seller = #{dealSeller}
+      </if>
+    	<if test="dealPhones != null" >
+    		AND deal_phones = #{dealPhones}
+      </if>
+    	<if test="dealRoomtype != null" >
+    		AND deal_roomtype = #{dealRoomtype}
+      </if>
+    	<if test="dealRoomtime != null" >
+    		AND deal_roomtime = #{dealRoomtime}
+      </if>
+    	<if test="coupon != null" >
+    		AND coupon = #{coupon}
+      </if>
+    	<if test="shops != null" >
+    		AND shops = #{shops}
+      </if>
+    </where>
+    <if test="startRow != null and pageSize != null">limit #{startRow},#{pageSize}</if>
+  </select>
+  
+  
+  <select id="getCateList" parameterType="java.util.Map" resultType="java.util.Map">
+  
+  	select distinct deal_cate ,deal_cate_id from t_deal where city_id=#{cityId}
+  
+  </select>
+</mapper>

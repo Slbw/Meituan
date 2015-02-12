@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zkgame.meituan.dao.maper.CityMapper" >
+  <resultMap id="BaseResultMap" type="com.zkgame.meituan.model.City" >
+    <result column="id" property="id" jdbcType="INTEGER" />
+    <result column="division_id" property="divisionId" jdbcType="VARCHAR" />
+    <result column="division_name" property="divisionName" jdbcType="VARCHAR" />
+    <result column="location_timezone" property="locationTimezone" jdbcType="VARCHAR" />
+    <result column="location_timezone_offset_gmt" property="locationTimezoneOffsetGmt" jdbcType="VARCHAR" />
+    <result column="location_latitude" property="locationLatitude" jdbcType="VARCHAR" />
+    <result column="location_longitude" property="locationLongitude" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+  	id, division_id, division_name, location_timezone, location_timezone_offset_gmt, location_latitude, location_longitude
+  </sql>
+  <!-- 查找记录 -->
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_city
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <!-- 删除指定记录 -->
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_city
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <!-- 新增记录 -->
+  <insert id="insert" parameterType="com.zkgame.meituan.model.City" useGeneratedKeys="true" keyProperty="id">
+    insert into t_city (
+    id, division_id, division_name, location_timezone, location_timezone_offset_gmt, location_latitude, location_longitude
+    )
+    values (
+    #{id,jdbcType=INTEGER}, #{divisionId,jdbcType=VARCHAR}, #{divisionName,jdbcType=VARCHAR}, #{locationTimezone,jdbcType=VARCHAR}, #{locationTimezoneOffsetGmt,jdbcType=VARCHAR}, #{locationLatitude,jdbcType=VARCHAR}, #{locationLongitude,jdbcType=VARCHAR}
+    )
+  </insert>
+  <!-- 新增记录 -->
+  <insert id="insertSelective" parameterType="com.zkgame.meituan.model.City" useGeneratedKeys="true" keyProperty="id">
+    insert into t_city
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+    	<if test="id != null" >
+        id,
+      </if>
+    	<if test="divisionId != null" >
+        division_id,
+      </if>
+    	<if test="divisionName != null" >
+        division_name,
+      </if>
+    	<if test="locationTimezone != null" >
+        location_timezone,
+      </if>
+    	<if test="locationTimezoneOffsetGmt != null" >
+        location_timezone_offset_gmt,
+      </if>
+    	<if test="locationLatitude != null" >
+        location_latitude,
+      </if>
+    	<if test="locationLongitude != null" >
+        location_longitude,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+    	<if test="id != null" >
+    		#{id,jdbcType=INTEGER},
+      </if>
+    	<if test="divisionId != null" >
+    		#{divisionId,jdbcType=VARCHAR},
+      </if>
+    	<if test="divisionName != null" >
+    		#{divisionName,jdbcType=VARCHAR},
+      </if>
+    	<if test="locationTimezone != null" >
+    		#{locationTimezone,jdbcType=VARCHAR},
+      </if>
+    	<if test="locationTimezoneOffsetGmt != null" >
+    		#{locationTimezoneOffsetGmt,jdbcType=VARCHAR},
+      </if>
+    	<if test="locationLatitude != null" >
+    		#{locationLatitude,jdbcType=VARCHAR},
+      </if>
+    	<if test="locationLongitude != null" >
+    		#{locationLongitude,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <!-- 修改指定记录 -->
+  <update id="updateByPrimaryKeySelective" parameterType="com.zkgame.meituan.model.City" >
+    update t_city
+    <set>
+    	<if test="divisionId != null" >
+    		division_id = #{divisionId,jdbcType=VARCHAR},
+      </if>
+    	<if test="divisionName != null" >
+    		division_name = #{divisionName,jdbcType=VARCHAR},
+      </if>
+    	<if test="locationTimezone != null" >
+    		location_timezone = #{locationTimezone,jdbcType=VARCHAR},
+      </if>
+    	<if test="locationTimezoneOffsetGmt != null" >
+    		location_timezone_offset_gmt = #{locationTimezoneOffsetGmt,jdbcType=VARCHAR},
+      </if>
+    	<if test="locationLatitude != null" >
+    		location_latitude = #{locationLatitude,jdbcType=VARCHAR},
+      </if>
+    	<if test="locationLongitude != null" >
+    		location_longitude = #{locationLongitude,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <!-- 修改指定记录 -->
+  <update id="updateByPrimaryKey" parameterType="com.zkgame.meituan.model.City" >
+    update t_city
+    set 
+	  	id = #{id,jdbcType=INTEGER}, 
+	  	division_id = #{divisionId,jdbcType=VARCHAR}, 
+	  	division_name = #{divisionName,jdbcType=VARCHAR}, 
+	  	location_timezone = #{locationTimezone,jdbcType=VARCHAR}, 
+	  	location_timezone_offset_gmt = #{locationTimezoneOffsetGmt,jdbcType=VARCHAR}, 
+	  	location_latitude = #{locationLatitude,jdbcType=VARCHAR}, 
+	  	location_longitude = #{locationLongitude,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <!-- 按条件查询(可分页) -->
+  <select id="selectByParams" parameterType="java.util.Map" resultMap="BaseResultMap">
+  	select
+    <include refid="Base_Column_List" />
+    from t_city
+    <where>
+    	<if test="id != null" >
+    		AND id = #{id}
+      </if>
+    	<if test="divisionId != null" >
+    		AND division_id = #{divisionId}
+      </if>
+    	<if test="divisionName != null" >
+    		AND division_name = #{divisionName}
+      </if>
+    	<if test="locationTimezone != null" >
+    		AND location_timezone = #{locationTimezone}
+      </if>
+    	<if test="locationTimezoneOffsetGmt != null" >
+    		AND location_timezone_offset_gmt = #{locationTimezoneOffsetGmt}
+      </if>
+    	<if test="locationLatitude != null" >
+    		AND location_latitude = #{locationLatitude}
+      </if>
+    	<if test="locationLongitude != null" >
+    		AND location_longitude = #{locationLongitude}
+      </if>
+    </where>
+    <if test="startRow != null and pageSize != null">limit #{startRow},#{pageSize}</if>
+  </select>
+  <!-- 按条件查询总数 -->
+  <select id="selectCntByParams" parameterType="java.util.Map" resultType="java.lang.Integer">
+  	select
+    count(*)
+    from t_city
+    <where>
+    	<if test="id != null" >
+    		AND id = #{id}
+      </if>
+    	<if test="divisionId != null" >
+    		AND division_id = #{divisionId}
+      </if>
+    	<if test="divisionName != null" >
+    		AND division_name = #{divisionName}
+      </if>
+    	<if test="locationTimezone != null" >
+    		AND location_timezone = #{locationTimezone}
+      </if>
+    	<if test="locationTimezoneOffsetGmt != null" >
+    		AND location_timezone_offset_gmt = #{locationTimezoneOffsetGmt}
+      </if>
+    	<if test="locationLatitude != null" >
+    		AND location_latitude = #{locationLatitude}
+      </if>
+    	<if test="locationLongitude != null" >
+    		AND location_longitude = #{locationLongitude}
+      </if>
+    </where>
+  </select>
+  
+  
+    <delete id="resetTable" >
+    truncate t_city
+ 	</delete>
+  
+  
+</mapper>

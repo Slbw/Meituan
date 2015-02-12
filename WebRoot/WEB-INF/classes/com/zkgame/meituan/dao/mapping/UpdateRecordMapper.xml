@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zkgame.meituan.dao.maper.UpdateRecordMapper" >
+  <resultMap id="BaseResultMap" type="com.zkgame.meituan.model.UpdateRecord" >
+    <result column="id" property="id" jdbcType="INTEGER" />
+    <result column="city_id" property="cityId" jdbcType="VARCHAR" />
+    <result column="city_name" property="cityName" jdbcType="VARCHAR" />
+    <result column="deal_count" property="dealCount" jdbcType="INTEGER" />
+    <result column="shop_count" property="shopCount" jdbcType="INTEGER" />
+    <result column="last_update" property="lastUpdate" jdbcType="INTEGER" />
+    <result column="version" property="version" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+  	id, city_id, city_name, deal_count, shop_count, last_update, version
+  </sql>
+  <!-- 查找记录 -->
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_update_record
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <!-- 删除指定记录 -->
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_update_record
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <!-- 新增记录 -->
+  <insert id="insert" parameterType="com.zkgame.meituan.model.UpdateRecord" useGeneratedKeys="true" keyProperty="id">
+    insert into t_update_record (
+    id, city_id, city_name, deal_count, shop_count, last_update, version
+    )
+    values (
+    #{id,jdbcType=INTEGER}, #{cityId,jdbcType=VARCHAR}, #{cityName,jdbcType=VARCHAR}, #{dealCount,jdbcType=INTEGER}, #{shopCount,jdbcType=INTEGER}, #{lastUpdate,jdbcType=INTEGER}, #{version,jdbcType=INTEGER}
+    )
+  </insert>
+  <!-- 新增记录 -->
+  <insert id="insertSelective" parameterType="com.zkgame.meituan.model.UpdateRecord" useGeneratedKeys="true" keyProperty="id">
+    insert into t_update_record
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+    	<if test="id != null" >
+        id,
+      </if>
+    	<if test="cityId != null" >
+        city_id,
+      </if>
+    	<if test="cityName != null" >
+        city_name,
+      </if>
+    	<if test="dealCount != null" >
+        deal_count,
+      </if>
+    	<if test="shopCount != null" >
+        shop_count,
+      </if>
+    	<if test="lastUpdate != null" >
+        last_update,
+      </if>
+    	<if test="version != null" >
+        version,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+    	<if test="id != null" >
+    		#{id,jdbcType=INTEGER},
+      </if>
+    	<if test="cityId != null" >
+    		#{cityId,jdbcType=VARCHAR},
+      </if>
+    	<if test="cityName != null" >
+    		#{cityName,jdbcType=VARCHAR},
+      </if>
+    	<if test="dealCount != null" >
+    		#{dealCount,jdbcType=INTEGER},
+      </if>
+    	<if test="shopCount != null" >
+    		#{shopCount,jdbcType=INTEGER},
+      </if>
+    	<if test="lastUpdate != null" >
+    		#{lastUpdate,jdbcType=INTEGER},
+      </if>
+    	<if test="version != null" >
+    		#{version,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <!-- 修改指定记录 -->
+  <update id="updateByPrimaryKeySelective" parameterType="com.zkgame.meituan.model.UpdateRecord" >
+    update t_update_record
+    <set>
+    	<if test="cityId != null" >
+    		city_id = #{cityId,jdbcType=VARCHAR},
+      </if>
+    	<if test="cityName != null" >
+    		city_name = #{cityName,jdbcType=VARCHAR},
+      </if>
+    	<if test="dealCount != null" >
+    		deal_count = #{dealCount,jdbcType=INTEGER},
+      </if>
+    	<if test="shopCount != null" >
+    		shop_count = #{shopCount,jdbcType=INTEGER},
+      </if>
+    	<if test="lastUpdate != null" >
+    		last_update = #{lastUpdate,jdbcType=INTEGER},
+      </if>
+    	<if test="version != null" >
+    		version = #{version,jdbcType=INTEGER},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <!-- 修改指定记录 -->
+  <update id="updateByPrimaryKey" parameterType="com.zkgame.meituan.model.UpdateRecord" >
+    update t_update_record
+    set 
+	  	id = #{id,jdbcType=INTEGER}, 
+	  	city_id = #{cityId,jdbcType=VARCHAR}, 
+	  	city_name = #{cityName,jdbcType=VARCHAR}, 
+	  	deal_count = #{dealCount,jdbcType=INTEGER}, 
+	  	shop_count = #{shopCount,jdbcType=INTEGER}, 
+	  	last_update = #{lastUpdate,jdbcType=INTEGER}, 
+	  	version = #{version,jdbcType=INTEGER}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <!-- 按条件查询(可分页) -->
+  <select id="selectByParams" parameterType="java.util.Map" resultMap="BaseResultMap">
+  	select
+    <include refid="Base_Column_List" />
+    from t_update_record
+    <where>
+    	<if test="id != null" >
+    		AND id = #{id}
+      </if>
+    	<if test="cityId != null" >
+    		AND city_id = #{cityId}
+      </if>
+    	<if test="cityName != null" >
+    		AND city_name = #{cityName}
+      </if>
+    	<if test="dealCount != null" >
+    		AND deal_count = #{dealCount}
+      </if>
+    	<if test="shopCount != null" >
+    		AND shop_count = #{shopCount}
+      </if>
+    	<if test="lastUpdate != null" >
+    		AND last_update = #{lastUpdate}
+      </if>
+    	<if test="version != null" >
+    		AND version = #{version}
+      </if>
+    </where>
+    <if test="startRow != null and pageSize != null">limit #{startRow},#{pageSize}</if>
+  </select>
+  <!-- 按条件查询总数 -->
+  <select id="selectCntByParams" parameterType="java.util.Map" resultType="java.lang.Integer">
+  	select
+    count(*)
+    from t_update_record
+    <where>
+    	<if test="id != null" >
+    		AND id = #{id}
+      </if>
+    	<if test="cityId != null" >
+    		AND city_id = #{cityId}
+      </if>
+    	<if test="cityName != null" >
+    		AND city_name = #{cityName}
+      </if>
+    	<if test="dealCount != null" >
+    		AND deal_count = #{dealCount}
+      </if>
+    	<if test="shopCount != null" >
+    		AND shop_count = #{shopCount}
+      </if>
+    	<if test="lastUpdate != null" >
+    		AND last_update = #{lastUpdate}
+      </if>
+    	<if test="version != null" >
+    		AND version = #{version}
+      </if>
+    </where>
+  </select>
+</mapper>
