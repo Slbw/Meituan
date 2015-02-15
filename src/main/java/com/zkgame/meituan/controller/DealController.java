@@ -148,27 +148,34 @@ public class DealController extends BaseController {
 	}
 
 	@RequestMapping(value = "/detail", method = { RequestMethod.POST, RequestMethod.GET })
-	@ResponseBody
-	public Object detail(@RequestParam(value = "dealId") String dealId, @RequestParam(value = "callback", required = false) String callback) {
+	@ResponseBody 
+	public Object detail(@RequestParam(value = "dealId") String dealId,@RequestParam(value = "cityId") String cityId, @RequestParam(value = "callback", required = false) String callback) {
 		Map<String, Object> resMap = new HashMap<String, Object>();
 
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("dealId", dealId);
+		params.put("cityId", cityId);
 		List<Deal> deals = dealService.searchByParams(params);
 		if (deals.size() > 0) {
 			Deal deal = deals.get(0);
-			String shopString = deal.getShops().substring(0, deal.getShops().length() - 1);
-			String[] shopStringList = shopString.split(",");
-			List<Shop> shopList = new ArrayList<Shop>();
-			for (int i = 0; i < shopStringList.length; i++) {
-				params.clear();
-				params.put("shopPoiid", shopStringList[i]);
-				List<Shop> shops = shopService.searchByParams(params);
-				if (shops.size() > 0) {
-					shopList.add(shops.get(0));
-				}
+			if(deal.getShops().equals(""))//没有商店信息
+			{
+				
 			}
-			deal.setShopList(shopList);
+			else {
+				String shopString = deal.getShops().substring(0, deal.getShops().length() - 1);
+				String[] shopStringList = shopString.split(",");
+				List<Shop> shopList = new ArrayList<Shop>();
+				for (int i = 0; i < shopStringList.length; i++) {
+					params.clear();
+					params.put("shopPoiid", shopStringList[i]);
+					List<Shop> shops = shopService.searchByParams(params);
+					if (shops.size() > 0) {
+						shopList.add(shops.get(0));
+					}
+				}
+				deal.setShopList(shopList);
+			}
 			resMap.put("data", deals);
 			addResultInfo(resMap, 0);
 
